@@ -1,0 +1,10 @@
+com2sec         snmpUser       default              {{ snmp.password }}
+group           snmpGroup      v1                   snmpUser
+group           snmpGroup      v2c                  snmpUser
+view            systemview          included        .1
+
+access          notConfigGroup      ""              any       noauth    exact  systemview none none
+
+syslocation     {{ snmp.location }}
+syscontact      {{ snmp.user }}        {{ snmp.email }}
+dontLogTCPWrappersConnects          yes

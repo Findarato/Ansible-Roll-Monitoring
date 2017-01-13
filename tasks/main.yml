@@ -1,2 +1,7 @@
----
-# tasks file for monitoring
+- include: centos.yml
+  when: ansible_os_family == 'RedHat'
+  static: no
+
+- include: ubuntu.yml
+  when: ansible_os_family == 'Debian'
+  static: no
