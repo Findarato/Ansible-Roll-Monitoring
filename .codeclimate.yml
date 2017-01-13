@@ -12,6 +12,6 @@ engines:
   duplication:
     enabled: true
 ratings:
-    paths:{}
+    paths:[]
 exclude_path:
     tests/
