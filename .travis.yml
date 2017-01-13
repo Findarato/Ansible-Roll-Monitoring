@@ -38,6 +38,7 @@ script:
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  slack: westchesterpublib:saU5CP0lYF7mHCkvRFNBwkrX
 
 addons:
   code_climate:
