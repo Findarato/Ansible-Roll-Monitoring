@@ -1,4 +1,6 @@
-# Monitoring
+# Ansible Role: Monitoring
+
+[![Build Status](https://travis-ci.org/Findarato/Ansible-Roll-Monitoring.svg?branch=master)](https://travis-ci.org/Findarato/Ansible-Roll-Monitoring)
 
 ## Requirements
 
