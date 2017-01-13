@@ -10,4 +10,8 @@ engines:
   markdownlint:
     enabled: true
   duplication:
-  enabled: true
+    enabled: true
+ratings:
+    paths:{}
+exclude_path:
+    tests/
