@@ -20,7 +20,7 @@
     group: root
     mode: 0600
   tags: snmp, service
-  notify: restart snmpd
+  notify: Restart snmpd
 
 - name: Snmp Start service
   systemd:
