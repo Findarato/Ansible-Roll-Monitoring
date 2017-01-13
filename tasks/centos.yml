@@ -11,13 +11,15 @@
     - net-snmp-libs
     - net-snmp-utils
 
+
 - name: Snmp Copy config
-  copy:
-    src: snmpd.conf
+  template:
+    src: snmpd.conf.j2
     dest: /etc/snmp/snmpd.conf
     owner: root
     group: root
     mode: 0600
+  tags: snmp, service
   notify: restart snmpd
 
 - name: Snmp Start service
