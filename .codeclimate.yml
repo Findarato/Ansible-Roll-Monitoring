@@ -1,0 +1,13 @@
+engines:
+  fixme:
+    enabled: true
+    config:
+      strings:
+      - FIXME
+      - BUG
+      - CUSTOM
+      - TODO
+  markdownlint:
+    enabled: true
+  duplication:
+  enabled: true
