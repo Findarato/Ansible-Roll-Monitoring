@@ -11,17 +11,6 @@
     - net-snmp-libs
     - net-snmp-utils
 
-
-- name: Snmp Copy config
-  template:
-    src: snmpd.conf.j2
-    dest: /etc/snmp/snmpd.conf
-    owner: root
-    group: root
-    mode: 0600
-  tags: snmp, service
-  notify: Restart snmpd
-
 - name: Snmp Start service
   systemd:
       name: snmpd
@@ -45,19 +34,7 @@
       daemon_reload: yes
   tags: nagios, service
 
-- name: Nrpe copy config
-  template:
-    src: nrpe.cfg.j2
-    dest: /etc/nagios/nrpe.cfg
-  tags: nrpe, service
-  notify: Restart nrpe
 
-- name: Nrpe copy command config
-  template:
-    src: monitor.cfg.j2
-    dest: /etc/nrpe.d/monitor.cfg
-  tags: nrpe, service
-  notify: Restart nrpe
 
 - name: Install firewalld
   yum:
