@@ -11,7 +11,6 @@ engines:
     enabled: true
   duplication:
     enabled: true
-ratings:
-    paths:[]
-exclude_path:
-    tests/
+exclude_paths:
+  - test/**/*
+  - vendor/**/*
