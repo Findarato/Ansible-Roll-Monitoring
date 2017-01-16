@@ -34,7 +34,7 @@
       daemon_reload: yes
   tags: nagios, service
 
-- name: Install firewalld
+- name: Install firewall
   yum:
       name: "{{ item }}"
       state: present
@@ -42,7 +42,7 @@
     - epel-release
     - firewalld
 
-- name: Firewalld start service
+- name: Firewall start service
   systemd:
       name: firewalld
       state: started
@@ -50,16 +50,16 @@
       daemon_reload: yes
   tags: service
 
-- name: Firewalld Allow nrpe
+- name: Firewall Allow nrpe
   firewalld:
     port: 5666/tcp
     permanent: true
     state: enabled
-  notify: Restart firewalld
+  notify: Restart firewall
 
-- name: Firewalld Allow snmp
+- name: Firewall Allow snmp
   firewalld:
     port: 161/udp
     permanent: true
     state: enabled
-  notify: Restart firewalld
+  notify: Restart firewall

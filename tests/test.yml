@@ -3,3 +3,7 @@
   remote_user: root
   roles:
     - role_under_test
+  vars:
+    nrpeDriveMounts:
+      - name: root
+        path:

@@ -1,0 +1,63 @@
+---
+# tasks file for monitoring
+
+- name: Install Snmp
+  yum:
+      name: "{{ item }}"
+      state: present
+  with_items:
+    - net-snmp
+    - net-snmp-libs
+    - net-snmp-utils
+
+- name: Snmp Start service
+  systemd:
+      name: snmpd
+      state: started
+      enabled: yes
+      daemon_reload: yes
+  tags: snmpd, service
+
+- name: Install nrpe and plugins
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{nagiosPlugins}}"
+
+- name: Nrpe Start service
+  systemd:
+      name: nrpe
+      state: started
+      enabled: yes
+      daemon_reload: yes
+  tags: nagios, service
+
+- name: Install firewall
+  yum:
+      name: "{{ item }}"
+      state: present
+  with_items:
+    - ufw
+
+- name: Firewall start service
+  systemd:
+      name: ufw
+      state: started
+      enabled: yes
+      daemon_reload: yes
+  tags: service
+
+- name: Firewall Allow nrpe
+  ufw:
+    port: 5666/tcp
+    permanent: true
+    state: enabled
+  notify: Restart firewall
+
+- name: Firewall Allow snmp
+  ufw:
+    port: 161/udp
+    permanent: true
+    state: enabled
+  notify: Restart firewall
